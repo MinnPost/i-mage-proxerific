@@ -17,8 +17,8 @@ var iConfig = {
     download: 5000
   },
   whitelist: {
-    allowedHosts: ['.*leg\.state\.mn\.us'],
-    trustedHosts: ['.*leg\.state\.mn\.us']
+    allowedHosts: ['.*leg\.state\.mn\.us', '.*senate\.mn'],
+    trustedHosts: ['.*leg\.state\.mn\.us', '.*senate\.mn']
   },
   keepDownloads: true,
   maxDownloadCacheSize: 500,
