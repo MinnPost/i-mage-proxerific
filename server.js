@@ -1,5 +1,10 @@
 var express = require('express');
-var imageable = require('imageable');
+
+// We need a hacked version of imageable for now so
+// that mime types are handled correctly.
+//
+// See https://github.com/sdepold/node-imageable/pull/17
+var imageable = require('./node-imageable/index.js');
 
 // Create server
 var app = express();
@@ -30,15 +35,15 @@ app.configure(function() {
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   
+  // Imageable
   app.use(imageable(iConfig, {
     before: function(stats) {
-      console.log('before');
     },
     after: function(stats, returnValueOfBefore, err) {
-      console.log('after');
     }
   }));
   
+  // Use router
   app.use(app.router);
 })
 
